@@ -34,8 +34,8 @@ public class UserRepository {
 
 
 
-    public UserEntity getUserByUsername(String username) {
-        TypedQuery<UserEntity> query = entityManager.createQuery(USER_BY_USERNAME, UserEntity.class).setParameter(1,username);
+    public UserEntity getUserByUsername(String firstName) {
+        TypedQuery<UserEntity> query = entityManager.createQuery(USER_BY_USERNAME, UserEntity.class).setParameter(1,firstName);
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {

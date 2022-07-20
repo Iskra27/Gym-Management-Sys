@@ -32,7 +32,7 @@ public class UserEntity implements Serializable {
     @Column(nullable = false,name="membership_id")
     private int membershipId ;
     @Column
-    private long trainer;
+    private int trainer;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role",
@@ -44,7 +44,7 @@ public class UserEntity implements Serializable {
         return trainer;
     }
 
-    public void setTrainer(long trainer) {
+    public void setTrainer(int trainer) {
         this.trainer = trainer;
     }
 

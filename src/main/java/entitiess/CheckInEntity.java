@@ -13,7 +13,7 @@ public class CheckInEntity implements Serializable {
 
 
     @Column(nullable = false)
-    private Long times;
+    private int times;
 
     public Long getId() {
         return id;
@@ -23,11 +23,11 @@ public class CheckInEntity implements Serializable {
         this.id = id;
     }
 
-    public Long getTimes() {
+    public int getTimes() {
         return times;
     }
 
-    public void setTimes(Long times) {
+    public void setTimes(int times) {
         this.times = times;
     }
 }

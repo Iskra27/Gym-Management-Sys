@@ -15,10 +15,10 @@ public class membershipEntity implements Serializable{
         private String membership;
 
         @Column(nullable = false)
-        private Long count;
+        private int count;
 
         @Column(nullable = false)
-        private Long fee;
+        private int fee;
 
         public Long getId() {
             return id;
@@ -36,19 +36,19 @@ public class membershipEntity implements Serializable{
             this.membership = membership;
         }
 
-        public Long getCount() {
+        public int getCount() {
             return count;
         }
 
-        public void setCount(Long count) {
+        public void setCount(int count) {
             this.count = count;
         }
 
-        public Long getFee() {
+        public int getFee() {
             return fee;
         }
 
-        public void setFee(Long fee) {
+        public void setFee(int fee) {
             this.fee = fee;
         }
     }
