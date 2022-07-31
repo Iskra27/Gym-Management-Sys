@@ -1,8 +1,12 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "equipment", schema = "public")
 @NamedQuery(name="equipment.delete", query = "delete from EquipmentEntity equipment  where equipment.id=?1")

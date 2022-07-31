@@ -11,7 +11,7 @@ public class EquipmentConverter {
         ToReturn.setPsc(equipmentEntity.getPsc());
         return ToReturn;
     }
-    public static EquipmentEntity ToEquipment(EquipmentDto equipmentDto){
+    public static EquipmentEntity ToEntity(EquipmentDto equipmentDto){
         EquipmentEntity toReturn=new EquipmentEntity();
         toReturn.setId(equipmentDto.getId());
         toReturn.setToolName(equipmentDto.getToolName());

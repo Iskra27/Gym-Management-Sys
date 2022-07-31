@@ -1,8 +1,12 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name="trainer",schema="public")
 public class TrainerEntity implements Serializable {

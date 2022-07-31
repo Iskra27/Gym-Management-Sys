@@ -1,10 +1,15 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "check_in", schema = "public")
+@NoArgsConstructor
+@ToString
 public class CheckInEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,4 +35,6 @@ public class CheckInEntity implements Serializable {
     public void setTimes(int times) {
         this.times = times;
     }
+
+
 }

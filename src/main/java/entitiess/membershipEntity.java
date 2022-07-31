@@ -1,8 +1,13 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
+@NoArgsConstructor
+@ToString
 @Table(name = "Membership", schema = "public")
 public class membershipEntity implements Serializable{
 

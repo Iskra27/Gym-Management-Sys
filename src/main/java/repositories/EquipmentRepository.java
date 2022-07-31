@@ -13,11 +13,12 @@ import java.util.List;
 public class EquipmentRepository {
     @Autowired
     private EntityManager entityManager;
-    private void addEquipment( EquipmentEntity equipment){entityManager.persist(equipment);
+
+
+    public void addEquipment( EquipmentEntity equipment){entityManager.persist(equipment);
     }
-private List<EquipmentEntity> getallEquipments(){
-        return entityManager.createQuery("Select equipment from EquipmentEntity equipment", EquipmentEntity.class).getResultList();}
-//Nuk duhet te punoje
+public List<EquipmentEntity> getallEquipments(){
+        return entityManager.createQuery("Select equipment.ToolName,equipment.psc from EquipmentEntity equipment", EquipmentEntity.class).getResultList();}
 
 public void deleteEquipment(EquipmentEntity equipment){
         entityManager.remove(equipment);}

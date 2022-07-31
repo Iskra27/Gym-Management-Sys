@@ -1,10 +1,16 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
+@NoArgsConstructor
+@ToString
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "role", schema = "public")
 @NamedQuery(name="Role.findById", query = "Select role from RoleEntity role where role.id=?1")
 public class RoleEntity implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -12,11 +18,10 @@ public class RoleEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@Column(nullable = false,name="role_type")
+
+    @Column(nullable = false,name="role_type")
     private String Role;
 
-    //@OneToMany(mappedBy = "roles")
-    //List<UserEntity> userEntityList=new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -33,4 +38,6 @@ public class RoleEntity implements Serializable {
     public void setRole(String role) {
         Role = role;
     }
+    @OneToMany(mappedBy = "role")
+    List<UserEntity> userEntityList=new ArrayList<>();
 }

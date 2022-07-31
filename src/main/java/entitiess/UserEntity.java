@@ -1,10 +1,13 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name="user",schema="public")
 @NamedQuery(name = "User.findAll", query = "SELECT user FROM UserEntity user ")
@@ -31,22 +34,8 @@ public class UserEntity implements Serializable {
     private int role ;
     @Column(nullable = false,name="membership_id")
     private int membershipId ;
-    @Column
-    private int trainer;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<RoleEntity> roles = new ArrayList<>();
 
-    public long getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(int trainer) {
-        this.trainer = trainer;
-    }
 
     public Long getId() {
         return id;
@@ -111,4 +100,16 @@ public class UserEntity implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    @ManyToOne
+    @JoinColumn(name="trainer_relations", referencedColumnName="user_id")
+    private TrainerRelEntity trainerRelEntity;
+
+    @ManyToOne
+    @JoinColumn(name="role",referencedColumnName = "role_id")
+    private RoleEntity roleEntity;
+    @ManyToOne
+    @JoinColumn(name="check_in",referencedColumnName = "id")
+    private CheckInEntity checkInEntity;
+
+
 }

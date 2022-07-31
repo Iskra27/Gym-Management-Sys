@@ -1,5 +1,6 @@
 package repositories;
 
+import dto.UserFilter;
 import entitiess.UserEntity;
 import org.springframework.stereotype.Repository;
 
@@ -23,10 +24,10 @@ public class UserRepository {
         this.entityManager = entityManager;
         this.roleRepository = roleRepository;
 
-}private static final String USER_BY_USERNAME = "SELECT user FROM UserEntity user where user.firstName =?1 ";
+}private static final String USER_BY_ID = "SELECT user FROM UserEntity user where user.id =?1 ";
 
 
-    public List<UserEntity> getAllUsers() {
+    public List<UserEntity> getAllUsers(UserFilter filter) {
         TypedQuery<UserEntity> query = entityManager.createNamedQuery("User.findAll", UserEntity.class);
         return query.getResultList();
     }
@@ -34,8 +35,8 @@ public class UserRepository {
 
 
 
-    public UserEntity getUserByUsername(String firstName) {
-        TypedQuery<UserEntity> query = entityManager.createQuery(USER_BY_USERNAME, UserEntity.class).setParameter(1,firstName);
+    public UserEntity getUserById(Long id) {
+        TypedQuery<UserEntity> query = entityManager.createQuery(USER_BY_ID, UserEntity.class).setParameter(1,id);
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {
@@ -52,13 +53,9 @@ public class UserRepository {
     }
 
 
-    public void hardDeleteUser(UserEntity user) {
+
+    public void DeleteUser(UserEntity user) {
         entityManager.remove(user);
     }
-//?
-    public void addRoleToUser(String username, Long roleId){
-        UserEntity user = getUserByUsername(username);
-      //?  RoleEntity role = roleRepository.getRoleById(roleId);
-        //?user.getRoles().add(role);
-        entityManager.merge(user);
-    }}
+
+    }

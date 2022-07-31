@@ -1,5 +1,6 @@
 package repositories;
 
+import dto.MotivationDto;
 import entitiess.MotivationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,11 +12,12 @@ import java.util.List;
 @Transactional
 @Repository
 public class MotivationRepository {
+    private static final String MOTIVATION_QUOTE = "Select motivation.MotivationQuote from MotivationEntity motivation order by RAND() LIMIT 1 ";
     @Autowired
     EntityManager entityManager;
-    public List<MotivationEntity> getallMotivation(MotivationEntity motivation){
-        return entityManager.createQuery("Select motivation.MotivationQuote from MotivationEntity motivation order by random() LIMIT 1 ",MotivationEntity.class).getResultList();
-    }//rregullo kte gabimin
+    public List<MotivationEntity> getallMotivation(MotivationDto motivation){
+        return (List<MotivationEntity>) entityManager.createNamedQuery(MOTIVATION_QUOTE, MotivationEntity.class);
+    }
     public void addMotivation(MotivationEntity motivation){
         entityManager.persist(motivation);
     }

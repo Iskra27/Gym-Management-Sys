@@ -1,11 +1,15 @@
 package entitiess;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-
+@NoArgsConstructor
+@ToString
 @Entity
-@Table(name = "membership_info", schema = "public")
+@Table(name = "memebership_info", schema = "public")
 public class MembershipInfoEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -13,7 +17,7 @@ public class MembershipInfoEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "membershio_type")
+    @Column(nullable = false, name = "membership_type")
     private String description;
     @Column(nullable = false,name="start_date")
     private LocalDate StartDate;

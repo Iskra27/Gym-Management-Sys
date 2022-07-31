@@ -17,13 +17,13 @@ public class TrainerRepository {
     public void addTrainer(TrainerEntity trainer){
         entityManager.persist(trainer);
     }
-    public void deleteTrainer(TrainerEntity trainer){
+    public void deleteTrainer(Long trainer){
         entityManager.remove(trainer);
     }
     public void updateTrainer(TrainerEntity trainer) {
         entityManager.merge(trainer);
     }
-    public List<TrainerEntity> getallTrainers(TrainerEntity trainer){
+    public List<TrainerEntity> getallTrainers(){
         return entityManager.createQuery("Select trainer.id,trainer.firstName,trainer.lastName from TrainerEntity trainer",TrainerEntity.class).getResultList();
     }
 }

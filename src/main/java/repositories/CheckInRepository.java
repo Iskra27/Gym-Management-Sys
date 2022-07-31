@@ -13,9 +13,6 @@ import java.util.List;
 public class CheckInRepository {
     @Autowired
     EntityManager entityManager;
-    //get checkin byid
-    //deletecheckin
-    //addcheckin
     public void addCheckIn(CheckInEntity checkIn){
         entityManager.persist(checkIn);
     }
@@ -23,7 +20,10 @@ public class CheckInRepository {
         entityManager.remove(checkIn);
 
     }
-    public List<CheckInEntity> getCheckInByid(CheckInEntity checkIn){
-        return entityManager.createQuery("Select checkIn from CheckInEntity checkin where checkin.id=?1",CheckInEntity.class).getResultList();
+    public List<CheckInEntity> getCheckInByid(Long checkIn){
+        return entityManager.createQuery("Select checkin from CheckInEntity checkin where checkin.id=?1",CheckInEntity.class).getResultList();
+    }
+    public Integer getsum(long id){
+        return entityManager.createQuery("Select sum() from check_in where id=?1",CheckInEntity.class);
     }
 }
